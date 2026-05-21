@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Consulta</title>
+  <link rel="stylesheet" href="../css/agendar.css">
+  <link rel="icon" href="https://img.icons8.com/?size=100&id=62852&format=png&color=2575fc" />
+</head>
+<body>
+  
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <h1 class="logo">+Med</h1>
+
+      <nav class="menu">
+        <a href="../index/index.html">Início</a>
+        <a href="../index/agendar.html">Agendar consulta</a>
+        <a href="../index/cadfuncionario.html">Verificar funcionario</a>
+        <a href="canais.html">Canais de Atendimento</a>
+      </nav>
+
+      <a href="../index/login.html" class="btn-login">Login / Cadastro</a>
+    </div>
+  </header>
+
+  <!-- MAIN (Formulário de Agendamento) -->
+  <main>
+    <form>
+      <h1>Agende sua consulta</h1>
+
+      <div class="row row3">
+        <div class="col">
+          <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+        </div>
+        <div class="col">
+          <input type="number" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+        </div>
+        <div class="col">
+          <input type="tel" id="celular" name="celular" placeholder="Digite seu telefone" required>
+        </div>
+      </div>
+
+      <!-- Novo campo de email -->
+      <div class="row">
+        <div class="col">
+          <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+        </div>
+      </div>
+
+      <label for="tipo">Tipo de consulta</label>
+      <select id="tipo" name="tipo" required>
+        <option value="">--Selecionar--</option>
+        <optgroup label="Consultas Gerais">
+          <option value="consulta_geral">Consulta Geral</option>
+          <option value="checkup">Check-up</option>
+        </optgroup>
+        <optgroup label="Especialistas">
+          <option value="cardiologia">Cardiologia</option>
+          <option value="dermatologia">Dermatologia</option>
+          <option value="pediatria">Pediatria</option>
+          <option value="neurologia">Neurologia</option>
+        </optgroup>
+        <optgroup label="Retorno / Acompanhamento">
+          <option value="retorno">Retorno</option>
+          <option value="reavaliacao">Reavaliação de exames</option>
+        </optgroup>
+      </select>
+
+      <div class="row data-hora">
+        <div class="col">
+          <label for="data">Escolha um dia</label>
+          <input type="date" id="data" name="data" min="2025-10-20" required>
+        </div>
+
+        <div class="col">
+          <label for="hora">Escolha um horário</label>
+          <input type="time" id="hora" name="hora" min="08:00" max="18:00" step="1800" required>
+        </div>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 +Med. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

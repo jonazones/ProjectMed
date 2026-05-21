@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Dual</title>
+  
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <header class="navbar-global">
+  <div class="nav-container">
+    <div class="nav-column nav-left">
+      <a href="index.html" class="logo-text">+Med</a>
+    </div>
+    
+    <nav class="nav-column nav-center">
+      <a href="index.html">Início</a>
+      <a href="agendar.html">Agendar consulta</a>
+      <a href="">Verificar funcionário</a>
+      <a href="">Canais de Atendimento</a>
+    </nav>
+
+    <div class="nav-column nav-right">
+      <a href="login.html" class="nav-btn-blue">Login / Cadastro</a>
+    </div>
+  </div>
+</header>
+  <div class="container">
+    <!-- Conteúdo flex (formulário + menu + imagem) -->
+    <div class="conteudo-flex">
+      <!-- Formulário + menu -->
+      <div class="formulario-bloco">
+        <!-- Menu de seleção -->
+        <div class="menu">
+          <button class="tab-btn active" data-tab="funcionario">Funcionário</button>
+          <button class="tab-btn" data-tab="cliente">Cliente</button>
+        </div>
+
+        <div class="conteudo">
+          <div class="formulario active" id="funcionario">
+            <h1>Login Funcionário</h1>
+            <input type="number" placeholder="Digite sua matricula" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+            <a href="#">Esqueceu a senha?</a>
+          </div>
+
+          <div class="formulario" id="cliente">
+            <h1>Login Cliente</h1>
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+            <div class="links">
+              <a href="#">Esqueceu a senha?</a>
+              <a href="cadastro.html">Criar conta</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="imagem-login">
+        <img src="../img/loginimg.jpg" alt="Login Image">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
