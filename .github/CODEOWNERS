@@ -1,0 +1,16 @@
+# CODEOWNERS
+
+# Backend (Fernando)
+/backend/ @beako-code 
+
+# Frontend
+/frontend/ @jonazones
+
+# Doc
+/docs/ @Lacssantos
+
+# FullStack
+/fstack/ @Lucazn05
+
+# Apresentação:
+/presentation/ @tamiresrossi-lab
