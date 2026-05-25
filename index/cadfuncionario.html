@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionários - Cadastro e Consulta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/cadfuncionario.css">
+</head>
+<body>
+    <header class="navbar-global">
+        <div class="nav-container">
+            
+            <div class="nav-column nav-left">
+            <a href="index.html" class="logo-text">+Med</a>
+            </div>
+            
+            <nav class="nav-column nav-center">
+            <a href="index.html">Início</a>
+            <a href="agendar.html">Agendar consulta</a>
+            <a href="cadfuncionario.html">Verificar funcionário</a>
+            <a href="canais.html">Canais de Atendimento</a>
+            </nav>  
+
+            <div class="nav-column nav-right">
+            <a href="login.html" class="nav-btn-blue">Login / Cadastro</a>
+            </div>
+
+        </div>
+    </header>
+    <div class="container">
+        <h1>Gerenciamento de Funcionários</h1>
+
+        <!-- Menu de abas -->
+        <div class="tab-menu">
+            <button class="tab-btn active" data-tab="cadastro">Cadastro</button>
+            <button class="tab-btn" data-tab="consulta">Consulta</button>
+        </div>
+
+        <!-- Formulário de Cadastro -->
+        <div id="cadastro" class="formulario active">
+            <form id="cadastroFuncionario">
+                <div class="linha">
+                    <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+                    <input type="text" id="idfunc" name="idfunc" placeholder="ID do funcionário" required>
+                </div>
+
+                <div class="linha">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
+                </div>
+
+                <div class="linha">
+                    <input type="text" id="cpf" name="cpf" placeholder="CPF" required>
+                    <select id="funcao" name="funcao" required>
+                        <option value="">Selecione a função</option>
+                        <option value="medico">Médico</option>
+                        <option value="enfermeiro">Enfermeiro</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="linha">
+                    <input type="text" id="crm" name="crm" placeholder="CRM">
+                    <input type="text" id="especialidade" name="especialidade" placeholder="Especialidade">
+                </div>
+
+                <button type="submit">Cadastrar</button>
+
+                <p class="tenhoconta">
+                    Já tem uma conta? <a href="login.html">Clique aqui!</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Aba de Consulta -->
+        <div id="consulta" class="formulario">
+            <h2>Consulta de Funcionários</h2>
+
+            <!-- Campos de pesquisa -->
+            <div class="linha">
+                <input type="text" id="buscarID" placeholder="Buscar por ID">
+                <input type="text" id="buscarCPF" placeholder="Buscar por CPF">
+            </div>
+
+            <div class="consulta">
+                <table id="tabelaFuncionarios">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>CPF</th>
+                            <th>Função</th>
+                            <th>CRM</th>
+                            <th>Especialidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dados cadastrados aparecerão aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/cadfuncionario.js"></script>
+</body>
+</html>

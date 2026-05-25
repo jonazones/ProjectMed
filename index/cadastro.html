@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="conteudo-flex">
+            <div class="imagem-cadastro">
+                <img src="../img/cadastroimg.jpeg" alt="Cadastro Image">
+            </div>
+
+            <div class="formulario-bloco">
+                <div class="conteudo">
+                    <form>
+                        <h1>Realize seu cadastro</h1>
+                        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                        <input type="password" id="senha" name="senha"  placeholder="Crie sua senha" required minlength="6">
+                        <input type="password" id="confsenha" name="confsenha" placeholder="Confirme sua senha" required>
+                        <button type="submit">Cadastrar</button>
+
+                        <p class="tenhoconta">
+                            Já tem uma conta? <a href="login.html">Clique aqui!</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
