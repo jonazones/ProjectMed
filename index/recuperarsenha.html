@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar Senha</title>
+
+  <link rel="stylesheet" href="../css/recuperarsenha.css">
+</head>
+
+<body>
+
+<header class="navbar-global">
+  <div class="nav-container">
+
+    <div class="nav-column nav-left">
+      <a href="index.html" class="logo-text">+Med</a>
+    </div>
+
+    <nav class="nav-column nav-center">
+      <a href="index.html">Início</a>
+      <a href="agendar.html">Agendar consulta</a>
+      <a href="cadfuncionario.html">Verificar funcionário</a>
+      <a href="canais.html">Canais de Atendimento</a>
+    </nav>
+
+    <div class="nav-column nav-right">
+      <a href="login.html" class="nav-btn-blue">Login / Cadastro</a>
+    </div>
+
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card-recuperacao">
+
+    <h1>Recuperar senha</h1>
+
+    <p>
+      Digite seu e-mail para receber as instruções de recuperação.
+    </p>
+
+    <input type="email"
+      id="email"
+      placeholder="Digite seu e-mail">
+
+    <button onclick="recuperarSenha()">
+      Enviar recuperação
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+function recuperarSenha() {
+
+  const email = document.getElementById("email").value;
+
+  if(email === "") {
+
+    alert("Digite seu e-mail.");
+    return;
+  }
+
+  alert("Instruções de recuperação enviadas para o e-mail!");
+
+}
+
+</script>
+
+</body>
+</html>
