@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(90deg, #a9bfd9, #287df5);
+  min-height: 100vh;
+}
+
+header {
+  height: 90px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 45px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  color: #2678f2;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+nav a {
+  margin: 0 18px;
+  color: #555;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: #2678f2;
+}
+
+.btn-login {
+  background: #287df5;
+  color: white;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding-top: 45px;
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.92);
+  width: 1120px;
+  border-radius: 18px;
+  padding: 70px 45px;
+  text-align: center;
+}
+
+.box h1 {
+  color: #287df5;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.subtitulo {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 55px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 50px 25px 35px;
+  min-height: 310px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+.icone {
+  font-size: 55px;
+  margin-bottom: 25px;
+}
+
+.whatsapp {
+  color: #25d366;
+}
+
+.telefone {
+  color: #009688;
+}
+
+.email {
+  color: #1d8bd8;
+}
+
+.card h2 {
+  font-size: 25px;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.contato {
+  color: #287df5;
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.card a {
+  display: inline-block;
+  background: #287df5;
+  color: white;
+  text-decoration: none;
+  padding: 14px 42px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.card a:hover {
+  background: #1f5fd8;
+}
+
+.card span {
+  color: #777;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 8px;
+  }
+
+  .box {
+    width: 92%;
+    padding: 40px 25px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

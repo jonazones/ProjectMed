@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <button type="submit">Enviar</button>
+      <button type="button" onclick="agendarConsulta()">Enviar</button>
     </form>
   </main>
 
@@ -89,5 +89,24 @@
     <p>&copy; 2025 +Med. Todos os direitos reservados.</p>
   </footer>
 
+<script>
+  function agendarConsulta() {
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const tipo = document.getElementById("tipo").value;
+    const data = document.getElementById("data").value;
+    const hora = document.getElementById("hora").value;
+
+    if (!nome || !email || !tipo || !data || !hora) {
+      alert("Preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    alert("Consulta agendada com sucesso!");
+
+    window.location.href =
+      `mailto:${email}?subject=Confirmação de Consulta&body=Olá ${nome}, sua consulta foi agendada com sucesso no sistema +Med.%0D%0A%0D%0ATipo de consulta: ${tipo}%0D%0AData: ${data}%0D%0AHorário: ${hora}%0D%0A%0D%0AObrigado por utilizar nossos serviços.`;
+  }
+ </script>
 </body>
 </html>
