@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard +Med</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<header class="navbar-global">
+  <div class="nav-container">
+    <div class="nav-column nav-left">
+      <a href="index.html" class="logo-text">+Med</a>
+    </div>
+
+    <nav class="nav-column nav-center">
+      <a href="index.html">Início</a>
+      <a href="agendar.html">Agendar consulta</a>
+      <a href="historico.html">Histórico</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="cadfuncionario.html">Verificar funcionário</a>
+      <a href="canais.html">Canais de Atendimento</a>
+    </nav>
+
+    <div class="nav-column nav-right">
+      <a href="login.html" class="nav-btn-blue">Login / Cadastro</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container">
+    <h1>Dashboard</h1>
+    <p class="subtitulo">Resumo geral dos agendamentos realizados no sistema.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h2 id="totalConsultas">0</h2>
+        <p>Total de consultas</p>
+      </div>
+
+      <div class="card">
+        <h2 id="consultasHoje">0</h2>
+        <p>Consultas hoje</p>
+      </div>
+
+      <div class="card">
+        <h2 id="totalPacientes">0</h2>
+        <p>Pacientes cadastrados</p>
+      </div>
+
+      <div class="card">
+        <h2 id="especialidadeMaisBuscada">-</h2>
+        <p>Consulta mais buscada</p>
+      </div>
+    </div>
+
+    <div class="painel">
+      <h2>Últimas consultas</h2>
+      <div id="ultimasConsultas"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+  function carregarDashboard() {
+    const consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+
+    document.getElementById("totalConsultas").textContent = consultas.length;
+
+    const hoje = new Date().toISOString().split("T")[0];
+
+    const consultasHoje = consultas.filter(consulta => consulta.data === hoje);
+    document.getElementById("consultasHoje").textContent = consultasHoje.length;
+
+    const pacientes = new Set(consultas.map(consulta => consulta.email));
+    document.getElementById("totalPacientes").textContent = pacientes.size;
+
+    const contagemTipos = {};
+
+    consultas.forEach(consulta => {
+      contagemTipos[consulta.tipo] = (contagemTipos[consulta.tipo] || 0) + 1;
+    });
+
+    let maisBuscada = "-";
+    let maiorQuantidade = 0;
+
+    for (let tipo in contagemTipos) {
+      if (contagemTipos[tipo] > maiorQuantidade) {
+        maisBuscada = tipo;
+        maiorQuantidade = contagemTipos[tipo];
+      }
+    }
+
+    document.getElementById("especialidadeMaisBuscada").textContent = maisBuscada;
+
+    const ultimasConsultas = document.getElementById("ultimasConsultas");
+
+    if (consultas.length === 0) {
+      ultimasConsultas.innerHTML = "<p class='vazio'>Nenhuma consulta cadastrada ainda.</p>";
+      return;
+    }
+
+    const ultimas = consultas.slice(-5).reverse();
+
+    ultimasConsultas.innerHTML = "";
+
+    ultimas.forEach(consulta => {
+      ultimasConsultas.innerHTML += `
+        <div class="linha-consulta">
+          <div>
+            <strong>${consulta.nome}</strong>
+            <p>${consulta.tipo}</p>
+          </div>
+
+          <span>${consulta.data} às ${consulta.hora}</span>
+        </div>
+      `;
+    });
+  }
+
+  carregarDashboard();
+</script>
+
+</body>
+</html>
