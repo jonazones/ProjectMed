@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Consultas</title></head>
+<body>
+<h2>Consultas</h2>
+<button onclick="carregar()">Atualizar</button>
+<table border="1" id="t"></table>
+
+<h3>Nova Consulta</h3>
+<input id="nome" placeholder="Nome"/><br/>
+<input id="cpf" placeholder="CPF"/><br/>
+<input id="tel" placeholder="Telefone"/><br/>
+<input id="email" placeholder="Email"/><br/>
+<input id="tipo" placeholder="Tipo"/><br/>
+<input id="data" type="date"/><br/>
+<input id="hora" type="time"/><br/>
+<button onclick="salvar()">Salvar</button>
+
+<script>
+function token(){return localStorage.getItem('token');}
+
+async function carregar(){
+  const res=await fetch('/api/consultas',{headers:{'Authorization':'Bearer '+token()}});
+  const dados=await res.json();
+  let html='<tr><th>ID</th><th>Paciente</th><th>Data</th><th>Hora</th></tr>';
+  dados.forEach(c=>{
+    html+=`<tr><td>${c.id}</td><td>${c.nomePaciente}</td><td>${c.data}</td><td>${c.horario}</td></tr>`;
+  });
+  t.innerHTML=html;
+}
+
+async function salvar(){
+  const body={
+    nomePaciente:nome.value,
+    cpf:cpf.value,
+    telefone:tel.value,
+    email:email.value,
+    tipoConsulta:tipo.value,
+    data:data.value,
+    horario:hora.value
+  };
+  await fetch('/api/consultas',{method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},
+    body:JSON.stringify(body)});
+  carregar();
+}
+carregar();
+</script>
+</body></html>
