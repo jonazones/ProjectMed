@@ -2,126 +2,88 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <title>+Med | Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard +Med</title>
-  <link rel="stylesheet" href="../css/dashboard.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="..//css/dashboard.css">
 </head>
 <body>
 
-<header class="navbar-global">
-  <div class="nav-container">
-    <div class="nav-column nav-left">
-      <a href="index.html" class="logo-text">+Med</a>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container">
+      <div class="logo">+Med</div>
+
+      <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="agendar.html">Agendar consulta</a>
+        <a href="historico.html">Histórico</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="cadfuncionario.html">Verificar funcionário</a>
+        <a href="canais.html">Canais de Atendimento</a>
+      </nav>
+
+      <a href="login.html" class="btn-login">Login / Cadastro</a>
     </div>
+  </header>
 
-    <nav class="nav-column nav-center">
-      <a href="index.html">Início</a>
-      <a href="agendar.html">Agendar consulta</a>
-      <a href="historico.html">Histórico</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="cadfuncionario.html">Verificar funcionário</a>
-      <a href="canais.html">Canais de Atendimento</a>
-    </nav>
+  <!-- ===== MAIN ===== -->
+  <main>
 
-    <div class="nav-column nav-right">
-      <a href="login.html" class="nav-btn-blue">Login / Cadastro</a>
-    </div>
-  </div>
-</header>
+    <!-- TÍTULO -->
+    <h2>Dashboard</h2>
+    <p class="intro">
+      Acompanhe suas consultas, pacientes cadastrados e os dados mais relevantes
+      em um só lugar.
+    </p>
 
-<main>
-  <section class="container">
-    <h1>Dashboard</h1>
-    <p class="subtitulo">Resumo geral dos agendamentos realizados no sistema.</p>
+    <!-- ===== AÇÕES ===== -->
+    <section class="acoes">
+      <a href="agendar.html" class="btn-principal">Agendar consulta</a>
+      <a href="historico.html" class="btn-secundario">Historico</a>
+    </section>
 
-    <div class="cards">
-      <div class="card">
-        <h2 id="totalConsultas">0</h2>
-        <p>Total de consultas</p>
-      </div>
+    <!-- ===== MARKETING / CARDS ===== -->
+    <section class="marketing">
 
-      <div class="card">
-        <h2 id="consultasHoje">0</h2>
-        <p>Consultas hoje</p>
-      </div>
+      <h3>Resumo do sistema</h3>
+      <p class="descricao">
+        Informações gerais sobre consultas, pacientes e especialidades mais buscadas.
+      </p>
 
-      <div class="card">
-        <h2 id="totalPacientes">0</h2>
-        <p>Pacientes cadastrados</p>
-      </div>
-
-      <div class="card">
-        <h2 id="especialidadeMaisBuscada">-</h2>
-        <p>Consulta mais buscada</p>
-      </div>
-    </div>
-
-    <div class="painel">
-      <h2>Últimas consultas</h2>
-      <div id="ultimasConsultas"></div>
-    </div>
-  </section>
-</main>
-
-<script>
-  function carregarDashboard() {
-    const consultas = JSON.parse(localStorage.getItem("consultas")) || [];
-
-    document.getElementById("totalConsultas").textContent = consultas.length;
-
-    const hoje = new Date().toISOString().split("T")[0];
-
-    const consultasHoje = consultas.filter(consulta => consulta.data === hoje);
-    document.getElementById("consultasHoje").textContent = consultasHoje.length;
-
-    const pacientes = new Set(consultas.map(consulta => consulta.email));
-    document.getElementById("totalPacientes").textContent = pacientes.size;
-
-    const contagemTipos = {};
-
-    consultas.forEach(consulta => {
-      contagemTipos[consulta.tipo] = (contagemTipos[consulta.tipo] || 0) + 1;
-    });
-
-    let maisBuscada = "-";
-    let maiorQuantidade = 0;
-
-    for (let tipo in contagemTipos) {
-      if (contagemTipos[tipo] > maiorQuantidade) {
-        maisBuscada = tipo;
-        maiorQuantidade = contagemTipos[tipo];
-      }
-    }
-
-    document.getElementById("especialidadeMaisBuscada").textContent = maisBuscada;
-
-    const ultimasConsultas = document.getElementById("ultimasConsultas");
-
-    if (consultas.length === 0) {
-      ultimasConsultas.innerHTML = "<p class='vazio'>Nenhuma consulta cadastrada ainda.</p>";
-      return;
-    }
-
-    const ultimas = consultas.slice(-5).reverse();
-
-    ultimasConsultas.innerHTML = "";
-
-    ultimas.forEach(consulta => {
-      ultimasConsultas.innerHTML += `
-        <div class="linha-consulta">
-          <div>
-            <strong>${consulta.nome}</strong>
-            <p>${consulta.tipo}</p>
-          </div>
-
-          <span>${consulta.data} às ${consulta.hora}</span>
+      <div class="cards">
+        <div class="card">
+          <h4>Total de consultas</h4>
+          <p id="totalConsultas">0</p>
         </div>
-      `;
-    });
-  }
 
-  carregarDashboard();
-</script>
+        <div class="card">
+          <h4>Consultas hoje</h4>
+          <p id="consultasHoje">0</p>
+        </div>
 
+        <div class="card">
+          <h4>Pacientes cadastrados</h4>
+          <p id="totalPacientes">0</p>
+        </div>
+
+        <div class="card">
+          <h4>Consulta mais buscada</h4>
+          <p id="especialidadeMaisBuscada">-</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2026 +Med — Todos os direitos reservados</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="..//scripts/dashboard.js"></script>
 </body>
 </html>
