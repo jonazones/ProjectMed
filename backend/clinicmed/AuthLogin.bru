@@ -1,0 +1,18 @@
+meta {
+  name: AuthLogin
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8081/api/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "lais.teste@gmail.com",
+    "password": "a2a5a1a4a36"
+  }
+}
